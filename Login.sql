@@ -1,0 +1,15 @@
+CREATE DATABASE laptrinhweb2025;
+USE laptrinhweb2025;
+
+CREATE TABLE `user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(100) NOT NULL UNIQUE,
+  `user_name` VARCHAR(50) NOT NULL,
+  `full_name` VARCHAR(100) DEFAULT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `avatar` VARCHAR(255) DEFAULT NULL,
+  `role_id` INT DEFAULT 0,
+  `phone` VARCHAR(15) DEFAULT NULL,
+  `created_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
