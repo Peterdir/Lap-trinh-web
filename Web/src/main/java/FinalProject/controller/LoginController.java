@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import FinalProject.Model.User;
 import FinalProject.Service.UserService;
-import FinalProject.Service.UserServiceImpl;
+import FinalProject.Service.impl.UserServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,7 +19,7 @@ public class LoginController extends HttpServlet {
 	UserService service = new UserServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/Login.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/Login.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -43,7 +43,7 @@ public class LoginController extends HttpServlet {
 				    password == null || password.trim().isEmpty()){
 			  alertMsg= "Tài khoản hoặc mật khẩu không được rỗng";
 			  req.setAttribute("alert", alertMsg);
-			  req.getRequestDispatcher("/Login.jsp").forward(req, resp);
+			  req.getRequestDispatcher("/views/Login.jsp").forward(req, resp);
 			  return;
 		  }
 		  User user = service.login(username, password);
@@ -53,7 +53,7 @@ public class LoginController extends HttpServlet {
 		  }else{
 			  alertMsg = "Tài khoản hoặc mật khẩu không đúng";
 			  req.setAttribute("alert", alertMsg);
-			  req.getRequestDispatcher("/Login.jsp").forward(req, resp);
+			  req.getRequestDispatcher("/views/Login.jsp").forward(req, resp);
 		  }
 	}
 }
